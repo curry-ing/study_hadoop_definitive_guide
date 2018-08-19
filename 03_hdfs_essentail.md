@@ -374,23 +374,9 @@ drwxr-xr-x   -   tom   supergroup     0   2009-04-02   22:41   /user/tom/books
 ### 3.6.3 일관성 모델
 - file의 읽기와 쓰기의 데이터 가시성(visibility)은 파일시스템의 일관성 모델(coherency model)로 설명 가능
 - HDFS는 성능을 위해 일부 POSIX 요구사항을 포기
-
 - 파일 생성시 파일시스템의 namespace에서 해당 파일 확인 가능
-```java
-Path p = new Path('p');
-fs.create(p);
-assertThat(fs.exists(p), is(true));
-```
-
-- 다만 생성은 되었어도 스트림이 flush 된 상황에서 파일을 바로 볼 수 있는것은 아님
-- 파일의 길이는 0으로 나타날 수 있음
-```java
-Path p = new Path("p");
-OutputStream out = fs.create(p);
-out.write("content".getBytes("UTF-8"));
-out.flush();
-assertThat(fs.getFileStatus(p).getLen(), is(0L));
-```
+    - 다만 생성은 되었어도 스트림이 flush 된 상황에서 파일을 바로 볼 수 있는것은 아님
+    - 파일의 길이는 0으로 나타날 수 있음
 - 일단 데이터가 한 블럭 이상 기록되면 새 리더는 첫 블록의 내용 열람 가능
 - **쓰기 작업이 진행중인 블록의 내용을 다른 리더가 볼 수 없음**
 
