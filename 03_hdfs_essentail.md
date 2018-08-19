@@ -289,14 +289,14 @@ drwxr-xr-x   -   tom   supergroup     0   2009-04-02   22:41   /user/tom/books
     - `distance(/d1/r1/n1, /d1/r1/n2) = 2` (동일 랙의 다른노드)
     - `distance(/d1/r1/n1, /d1/r2/n3) = 4` (동일 데이터센터에 있는 다른 랙의 노드)
     - `distance(/d1/r1/n1, /d2/r3/n4) = 6` (다른 데이터센터에 있는 노드)
-![](./figures/3_2.jpg)
+<img src="./figures/3_2.jpg" width="640">
 - 하둡은 토폴로지를 자동으로 인식하지 못함
 - 기본적으로 단일 수준 계층에 노드가 존재한다고 가정 => 작은 클러스터에는 큰 문제 없음
 - 대형 클러스터에는 설정이 필요하며 이는 10.1.2를 참조
 
 ### 3.6.1 파일 읽기 상세
 ##### HDFS로부터 데이터를 읽고 있는 클라이언트
-![](./figures/3_1.jpg)
+<img src="./figures/3_1.jpg" width="640">
 
 1. `DistributedFileSystem` 인스턴스인 `FileSystem`객체의 `open`메소드를 호출하여 원하는 파일을 연다
 2. 파일의 첫 번째 블록 위치 파악을 위해 RPC를 사용하여 NN호출
@@ -322,7 +322,7 @@ drwxr-xr-x   -   tom   supergroup     0   2009-04-02   22:41   /user/tom/books
 ### 3.6.2 파일 쓰기 상세
 - 복잡하지만, HDFS의 일관성 모델을 명확히 설명
 
-![](./figures/3_3.jpg)
+<img src="./figures/3_3.jpg" width="640">
 
 1. Client는 `DistributedFileSystem`의 `create`를 호출하여 파일생성
 2. `DistributedFileSystem`은 파일시스템의 namespace에 새로운 파일을 생성하기 위해 NN에 RPC 요청
@@ -369,7 +369,7 @@ drwxr-xr-x   -   tom   supergroup     0   2009-04-02   22:41   /user/tom/books
     4. 그 이상 => Random
 - Network topology를 고려하여 복제본의 위치를 선정한 후 파이프라인을 형성
 
-![](./figures/3_4.jpg)
+<img src="./figures/3_4.jpg" width="640">
 
 ### 3.6.3 일관성 모델
 - file의 읽기와 쓰기의 데이터 가시성(visibility)은 파일시스템의 일관성 모델(coherency model)로 설명 가능
